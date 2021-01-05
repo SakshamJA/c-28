@@ -1,8 +1,8 @@
 class Slingshot {
-    constructor(body1,body2) {
+    constructor(body1,point) {
         var options = {
             bodyA: body1,
-            bodyB: body2,
+            pointB: point,
             stiffness:0.04,
             lenght:10
         }
@@ -11,10 +11,16 @@ class Slingshot {
     }
 
     display() {
-    var pointA = this.sling.bodyA.position;
-    var pointB = this.sling.bodyB.position;
+        if(this.sling.bodyA){
+            var pointA = this.sling.bodyA.position;
+            var pointB = this.sling.pointB;
 
-    strokeWeight(4);
-    line(pointA.x,pointA.y,pointB.x,pointB.y);
+            strokeWeight(4);
+            line(pointA.x,pointA.y,pointB.x,pointB.y);
+        }
+
     }
+     fly() {
+         this.sling.bodyA = null;
+     }
 };
